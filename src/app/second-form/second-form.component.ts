@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { apiService } from 'src/app/shared/api.service';
+import { Router } from '@angular/router';
 // import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+// import { Observable } from 'rxjs';
 import { Data } from '../data.model';
 
 @Component({
@@ -13,35 +14,39 @@ import { Data } from '../data.model';
 export class SecondFormComponent implements OnInit {
   secondForm: FormGroup = new FormGroup({
     name: new FormControl(null, Validators.required),
-    id: new FormControl(null, Validators.required),
-    description: new FormControl(null, [Validators.required]),
+    dodId: new FormControl(null, Validators.required),
+    message: new FormControl(null, [Validators.required]),
   });
   data: Data = {};
+  formSubmitted: boolean = false;
 
-  constructor(private apiService: apiService) {}
+  constructor(private apiService: apiService, private router: Router) {}
 
   ngOnInit() {
     this.apiService.fetchUserData().subscribe((data) => (this.data = data));
-    console.log(this.data.branch);
   }
 
   setData() {
     this.secondForm.setValue({
       name: this.data.name,
-      id: this.data.id,
-      description: '',
+      dodId: this.data.dodId,
+      message: '',
     });
   }
 
   onSubmit() {
+    this.formSubmitted = true;
     const newData: Data = {
       name: this.secondForm.value.name,
-      id: this.secondForm.value.id,
+      dodId: this.secondForm.value.dodId,
       description: this.secondForm.value.description,
     };
     this.apiService.postSecondForm(newData).subscribe((responseData) => {
       console.log(responseData);
     });
+    this.secondForm.reset();
+    localStorage.clear();
+    this.router.navigate(['/view']);
   }
   // const key = JSON.parse(localStorage.getItem('id')!);
   // this.http

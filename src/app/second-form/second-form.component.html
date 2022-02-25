@@ -1,15 +1,14 @@
-<button class="btn btn-primary" type="button" (click)="setData()">
-  Auto fill Form
-</button>
-
 <div class="container bg-light p-5 border border-dark">
+  <button class="btn btn-primary" type="button" (click)="setData()">
+    Auto fill Form
+  </button>
   <form
     class="mx-auto my-5 form"
     (ngSubmit)="onSubmit()"
     [formGroup]="secondForm"
   >
     <div id="user-data">
-      <div class="row my-3">
+      <div class="row my-3 justify-content-center">
         <!-- name -->
         <div class="form-group col-lg-5 col-md-12">
           <label for="name">Name (Last, First, MI) *</label>
@@ -34,35 +33,37 @@
           <input
             type="number"
             id="id"
-            formControlName="id"
+            formControlName="dodId"
             class="form-control"
           />
         </div>
-      </div>
-    </div>
 
-    <!-- text area -->
-    <div class="row my-3">
-      <div class="col-md-10">
-        <label for="description">Description *</label>
-        <textarea
-          type="text"
-          id="description"
-          formControlName="description"
-          class="form-control"
-        ></textarea>
+        <!-- text area -->
+        <div class="col-lg-10 jus">
+          <label for="message">message *</label>
+          <textarea
+            type="text"
+            id="message"
+            formControlName="message"
+            class="form-control"
+          ></textarea>
+        </div>
       </div>
     </div>
-    <div class="form-group"></div>
-    <button
-      type="submit"
-      *ngIf="secondForm.valid && secondForm.touched"
-      class="btn btn-primary"
-    >
-      Submit
-    </button>
-    <span *ngIf="!secondForm.valid && secondForm.touched" class="help-block"
-      >Please fill out all inputs</span
-    >
+    <div class="d-grid gap-2 col-6 mx-auto">
+      <button
+        type="submit"
+        *ngIf="secondForm.valid && secondForm.touched && !formSubmitted"
+        class="btn btn-primary"
+      >
+        Submit
+      </button>
+      <span *ngIf="!secondForm.valid && secondForm.touched" class="help-block"
+        >Please fill out all inputs</span
+      >
+      <!-- <a routerLink="/view" *ngIf="formSubmitted" class="btn btn-success">
+        View Submissions
+      </a> -->
+    </div>
   </form>
 </div>

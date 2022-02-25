@@ -9,13 +9,13 @@ import { Data } from '../data.model';
   styleUrls: ['./form.component.scss'],
 })
 export class FormComponent implements OnInit {
-  genders = ['male', 'female'];
+  genders = ['Male', 'Female'];
   doccumentForm: FormGroup = new FormGroup({
     name: new FormControl(null, Validators.required),
-    id: new FormControl(null, Validators.required),
+    dodId: new FormControl(null, Validators.required),
     email: new FormControl(null, [Validators.required, Validators.email]),
-    gender: new FormControl('male'),
-    branch: new FormControl('Please Select One', Validators.required),
+    gender: new FormControl('Male'),
+    branch: new FormControl(null, Validators.required),
     active: new FormControl(true, [Validators.required]),
     description: new FormControl(null, [Validators.required]),
     mishap: new FormControl(false),
@@ -28,9 +28,10 @@ export class FormComponent implements OnInit {
   ngOnInit() {}
 
   onSubmit() {
+    this.formSubmitted = true;
     const newData: Data = {
       name: this.doccumentForm.value.name,
-      id: this.doccumentForm.value.id,
+      dodId: this.doccumentForm.value.dodId,
       email: this.doccumentForm.value.email,
       gender: this.doccumentForm.value.gender,
       branch: this.doccumentForm.value.branch,
@@ -45,6 +46,7 @@ export class FormComponent implements OnInit {
       localStorage.setItem('id', jsonData);
       console.log(jsonData);
     });
+    this.doccumentForm.reset();
   }
   // this.doccumentForm
   // this.http

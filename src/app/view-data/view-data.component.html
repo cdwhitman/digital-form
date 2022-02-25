@@ -1,1 +1,29 @@
-<p>view-data works!</p>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="card col-xl-5 col-md-10 m-3" *ngFor="let user of users">
+      <div class="text-center">
+        <h1>{{ user.name }}</h1>
+      </div>
+      <hr />
+      <div class="row p-5 fs-5 fs-bold">
+        <div class="col">
+          <p>DoD Id: {{ user.dodId }}</p>
+          <p>Email: {{ user.email }}</p>
+          <p>Branch: {{ user.branch }}</p>
+        </div>
+        <div class="col">
+          <p>Gender: {{ user.gender }}</p>
+          <p *ngIf="user.active">Active Duty</p>
+        </div>
+        <div class="text-center">
+          <p>Description: {{ user.description }}</p>
+          <hr />
+          <p *ngIf="user.mishapDescription">
+            Mishap Description: {{ user.mishapDescription }}
+          </p>
+          <p>{{ user.message }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

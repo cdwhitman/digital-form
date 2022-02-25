@@ -1,6 +1,7 @@
 export interface Data {
+  id?: string;
   name?: string;
-  id?: number;
+  dodId?: number;
   email?: string;
   gender?: string;
   branch?: string;
@@ -8,4 +9,5 @@ export interface Data {
   description?: string;
   mishap?: boolean;
   mishapDescription?: string;
+  message?: string;
 }
