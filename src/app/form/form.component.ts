@@ -19,12 +19,14 @@ export class FormComponent implements OnInit {
     mishap: new FormControl(false),
     mishapDescription: new FormControl(null),
   });
+  formSubmitted: boolean = false;
 
   constructor(private http: HttpClient) {}
 
   ngOnInit() {}
 
   onSubmit() {
+    this.formSubmitted = true;
     this.http
       .post(
         `https://angular-digital-form-default-rtdb.firebaseio.com/data.json`,

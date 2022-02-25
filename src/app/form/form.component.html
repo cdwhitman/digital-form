@@ -137,5 +137,6 @@
     >
   </form>
 </div>
-
-<app-second-form></app-second-form>
+<div *ngIf="formSubmitted">
+  <app-second-form></app-second-form>
+</div>

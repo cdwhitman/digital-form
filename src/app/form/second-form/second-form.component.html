@@ -40,46 +40,7 @@
         </div>
       </div>
     </div>
-    <!-- email -->
-    <div class="row my-3">
-      <div class="col-lg-5 col-md-12">
-        <label for="email">Email *</label>
-        <input
-          type="email"
-          id="email"
-          formControlName="email"
-          class="form-control"
-        />
-      </div>
-      <!-- select -->
-      <div class="col-lg-5 col-md-12">
-        <label for="Branch">Branch of service *</label>
-        <select
-          id="branch"
-          formControlName="branch"
-          class="form-control form-select"
-        >
-          <option selected>Please Select One</option>
-          <option value="Navy">Navy</option>
-          <option value="Army">Army</option>
-          <option value="Marines">Marines</option>
-          <option value="Air-force">Air Force</option>
-        </select>
-      </div>
-    </div>
-    <!-- checkbox -->
-    <div class="form-check">
-      <label class="col-5" for="mishap">
-        Active duty
-        <input
-          class="form-check-input"
-          type="checkbox"
-          value="true"
-          id="mishap"
-          formControlName="gender"
-        />
-      </label>
-    </div>
+
     <!-- text area -->
     <div class="row my-3">
       <div class="col-md-10">
@@ -92,18 +53,16 @@
         ></textarea>
       </div>
     </div>
-    <!-- <div class="form-group"></div>
+    <div class="form-group"></div>
     <button
       type="submit"
-      *ngIf="doccumentForm.valid && doccumentForm.touched"
+      *ngIf="secondForm.valid && secondForm.touched"
       class="btn btn-primary"
     >
       Submit
     </button>
-    <span
-      *ngIf="!doccumentForm.valid && doccumentForm.touched"
-      class="help-block"
+    <span *ngIf="!secondForm.valid && secondForm.touched" class="help-block"
       >Please fill out all inputs</span
-    > -->
+    >
   </form>
 </div>
