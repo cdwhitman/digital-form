@@ -1,12 +1,12 @@
-<button class="btn btn-primary" type="button" (click)="onFetchData()">
+<button class="btn btn-primary" type="button" (click)="setData()">
   Auto fill Form
 </button>
 
 <div class="container bg-light p-5 border border-dark">
   <form
     class="mx-auto my-5 form"
-    [formGroup]="secondForm"
     (ngSubmit)="onSubmit()"
+    [formGroup]="secondForm"
   >
     <div id="user-data">
       <div class="row my-3">

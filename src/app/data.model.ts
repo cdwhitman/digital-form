@@ -4,6 +4,7 @@ export interface Data {
   email?: string;
   gender?: string;
   branch?: string;
+  active?: boolean;
   description?: string;
   mishap?: boolean;
   mishapDescription?: string;
