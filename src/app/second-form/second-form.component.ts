@@ -13,7 +13,7 @@ export class SecondFormComponent implements OnInit {
   secondForm: FormGroup = new FormGroup({
     name: new FormControl(null, Validators.required),
     dodId: new FormControl(null, Validators.required),
-    message: new FormControl(null),
+    satisfaction: new FormControl(null),
     unit: new FormControl(null, Validators.required),
     country: new FormControl(null, Validators.required),
   });
@@ -30,7 +30,7 @@ export class SecondFormComponent implements OnInit {
     this.secondForm.setValue({
       name: this.data.name,
       dodId: this.data.dodId,
-      message: '',
+      satisfaction: '',
       unit: '',
       country: '',
     });
@@ -41,7 +41,7 @@ export class SecondFormComponent implements OnInit {
     const newData: Data = {
       name: this.secondForm.value.name,
       dodId: this.secondForm.value.dodId,
-      message: this.secondForm.value.message,
+      satisfaction: this.secondForm.value.satisfaction,
       unit: this.secondForm.value.unit,
       country: this.secondForm.value.country,
     };

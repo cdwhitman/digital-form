@@ -9,7 +9,7 @@ export interface Data {
   description?: string;
   mishap?: boolean;
   mishapDescription?: string;
-  message?: string;
+  satisfaction?: number;
   unit?: string;
   country?: string;
 }

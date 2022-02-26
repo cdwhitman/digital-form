@@ -4,7 +4,11 @@
     [formGroup]="doccumentForm"
     (ngSubmit)="onSubmit()"
   >
-    <div id="user-data">
+    <div *ngIf="formSubmitted" class="text-center text-success my-5">
+      <h1>Thank you for your submission!</h1>
+      <h2>Please proceed to the next form.</h2>
+    </div>
+    <div *ngIf="!formSubmitted" id="user-data">
       <div class="row my-3 justify-content-center">
         <!-- name -->
         <div class="form-group my-3 col-lg-5 col-md-12">
@@ -15,14 +19,14 @@
             formControlName="name"
             class="form-control"
           />
-          <!-- <span
+          <span
             *ngIf="
-              doccumentForm.value.name.isValid &&
-              doccumentForm.value.name.valid.touched
+              !doccumentForm.get('name')?.valid &&
+              doccumentForm.get('name')?.touched
             "
-            class="help-block"
-            >Please enter a name</span
-          > -->
+            class="help-block text-danger"
+            >Please enter your name</span
+          >
         </div>
         <!-- id number -->
         <div class="form-group my-3 col-lg-5 col-md-12">
@@ -33,6 +37,14 @@
             formControlName="dodId"
             class="form-control"
           />
+          <span
+            *ngIf="
+              !doccumentForm.get('dodId')?.valid &&
+              doccumentForm.get('dodId')?.touched
+            "
+            class="help-block text-danger"
+            >Please enter your ID number</span
+          >
         </div>
 
         <!-- email -->
@@ -45,6 +57,14 @@
             formControlName="email"
             class="form-control"
           />
+          <span
+            *ngIf="
+              !doccumentForm.get('email')?.valid &&
+              doccumentForm.get('email')?.touched
+            "
+            class="help-block text-danger"
+            >Please enter a valid email address</span
+          >
         </div>
         <!-- select -->
         <div class="col-lg-5 my-3 col-md-12">
@@ -59,6 +79,14 @@
             <option value="Marines">Marines</option>
             <option value="Air-force">Air Force</option>
           </select>
+          <span
+            *ngIf="
+              !doccumentForm.get('branch')?.valid &&
+              doccumentForm.get('branch')?.touched
+            "
+            class="help-block text-danger"
+            >Please select your branch of service</span
+          >
         </div>
         <!-- radio -->
         <div class="radio col-md-10" *ngFor="let gender of genders">
@@ -93,6 +121,14 @@
             formControlName="description"
             class="form-control"
           ></textarea>
+          <span
+            *ngIf="
+              !doccumentForm.get('description')?.valid &&
+              doccumentForm.get('description')?.touched
+            "
+            class="help-block text-danger"
+            >Please enter a description</span
+          >
         </div>
         <!-- switch -->
         <div class="form-check col-9 form-switch">
@@ -130,7 +166,7 @@
       </button>
       <span
         *ngIf="!doccumentForm.valid && doccumentForm.touched"
-        class="help-block text-center p-2 fs-5 bg-danger"
+        class="help-block text-danger"
         ><strong>
           Please fill out all inputs. * indicates a required field.</strong
         ></span

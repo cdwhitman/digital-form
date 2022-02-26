@@ -20,7 +20,6 @@ export class ViewDataComponent implements OnInit {
     this.apiService.fetchAll().subscribe((data) => {
       this.isFetching = false;
       this.users = data;
-      console.log(data[0].message);
     });
   }
 }
