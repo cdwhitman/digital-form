@@ -48,16 +48,4 @@ export class FormComponent implements OnInit {
     });
     this.doccumentForm.reset();
   }
-  // this.doccumentForm
-  // this.http
-  //   .post(
-  //     `https://angular-digital-form-default-rtdb.firebaseio.com/data.json`,
-  //     this.doccumentForm.value
-  //   )
-  //   .subscribe((responseData) => {
-  //     const jsonData = JSON.stringify(responseData);
-  //     localStorage.setItem('id', jsonData);
-  //     console.log(jsonData);
-  //   });
-  // this.doccumentForm.reset();
 }

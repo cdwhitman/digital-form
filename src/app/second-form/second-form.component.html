@@ -10,7 +10,7 @@
     <div id="user-data">
       <div class="row my-3 justify-content-center">
         <!-- name -->
-        <div class="form-group col-lg-5 col-md-12">
+        <div class="form-group my-3 col-lg-5 col-md-12">
           <label for="name">Name (Last, First, MI) *</label>
           <input
             type="text"
@@ -18,28 +18,40 @@
             formControlName="name"
             class="form-control"
           />
-          <!-- <span
-            *ngIf="
-              doccumentForm.get('name').valid &&
-              doccumentForm.get('name').touched
-            "
-            class="help-block"
-            >Please enter a name</span
-          > -->
         </div>
+
         <!-- id number -->
-        <div class="form-group col-lg-5 col-md-12">
-          <label for="id">ID# *</label>
+        <div class="form-group my-3 col-lg-5 col-md-12">
+          <label for="dodId">DoD ID# *</label>
           <input
             type="number"
-            id="id"
+            id="dodId"
             formControlName="dodId"
             class="form-control"
           />
         </div>
-
+        <!-- unit -->
+        <div class="form-group my-3 col-lg-5 col-md-12">
+          <label for="unit">Unit *</label>
+          <input
+            type="text"
+            id="unit"
+            formControlName="unit"
+            class="form-control"
+          />
+        </div>
+        <!-- country -->
+        <div class="form-group my-3 col-lg-5 col-md-12">
+          <label for="country">Country *</label>
+          <input
+            type="text"
+            id="country"
+            formControlName="country"
+            class="form-control"
+          />
+        </div>
         <!-- text area -->
-        <div class="col-lg-10 jus">
+        <div class="col-lg-10 my-3 jus">
           <label for="message">message *</label>
           <textarea
             type="text"
@@ -58,12 +70,14 @@
       >
         Submit
       </button>
-      <span *ngIf="!secondForm.valid && secondForm.touched" class="help-block"
-        >Please fill out all inputs</span
+      <span
+        *ngIf="!secondForm.valid && secondForm.touched"
+        class="help-block text-center p-2 fs-5 bg-danger"
+        ><strong>
+          Please fill out all required fields. * indicates a required
+          field.</strong
+        ></span
       >
-      <!-- <a routerLink="/view" *ngIf="formSubmitted" class="btn btn-success">
-        View Submissions
-      </a> -->
     </div>
   </form>
 </div>

@@ -10,9 +10,12 @@
           <p>DoD Id: {{ user.dodId }}</p>
           <p>Email: {{ user.email }}</p>
           <p>Branch: {{ user.branch }}</p>
+          <p>Unit: {{ user.unit }}</p>
         </div>
         <div class="col">
+          <p>Country: {{ user.country }}</p>
           <p>Gender: {{ user.gender }}</p>
+          <p>Message: {{ user.message }}</p>
           <p *ngIf="user.active">Active Duty</p>
         </div>
         <div class="text-center">
@@ -21,7 +24,6 @@
           <p *ngIf="user.mishapDescription">
             Mishap Description: {{ user.mishapDescription }}
           </p>
-          <p>{{ user.message }}</p>
         </div>
       </div>
     </div>

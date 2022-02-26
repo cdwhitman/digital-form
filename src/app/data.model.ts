@@ -10,4 +10,6 @@ export interface Data {
   mishap?: boolean;
   mishapDescription?: string;
   message?: string;
+  unit?: string;
+  country?: string;
 }

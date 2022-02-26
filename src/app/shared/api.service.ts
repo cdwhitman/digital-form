@@ -23,10 +23,10 @@ export class apiService {
     return this.http.post<Data>(this.formApiUrl, data);
   }
 
-  postSecondForm(data: Data): Observable<Data> {
+  patchSecondForm(data: Data): Observable<Data> {
     const userKey = JSON.parse(localStorage.getItem('id')!);
     const endPoint = userKey.name;
-    return this.http.post<Data>(
+    return this.http.patch<Data>(
       `https://angular-digital-form-default-rtdb.firebaseio.com/data/${endPoint}.json`,
       data
     );

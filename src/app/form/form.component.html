@@ -8,7 +8,7 @@
       <div class="row my-3 justify-content-center">
         <!-- name -->
         <div class="form-group my-3 col-lg-5 col-md-12">
-          <label for="name">Name (Last, First, MI) *</label>
+          <label for="name">Name *</label>
           <input
             type="text"
             id="name"
@@ -60,9 +60,7 @@
             <option value="Air-force">Air Force</option>
           </select>
         </div>
-        <!-- </div> -->
         <!-- radio -->
-        <!-- <div class="row my-3"> -->
         <div class="radio col-md-10" *ngFor="let gender of genders">
           <label class="">
             <input
@@ -73,7 +71,6 @@
             />{{ gender }}
           </label>
         </div>
-        <!-- </div> -->
         <!-- checkbox -->
         <div class="form-check my-3 col-9">
           <label for="active">
@@ -88,7 +85,6 @@
           </label>
         </div>
         <!-- text area -->
-        <!-- <div class="row my-3"> -->
         <div class="my-3 col-md-10">
           <label for="description">Description *</label>
           <textarea
@@ -98,7 +94,6 @@
             class="form-control"
           ></textarea>
         </div>
-        <!-- </div> -->
         <!-- switch -->
         <div class="form-check col-9 form-switch">
           <label class="form-check-label" for="mishap"
@@ -135,13 +130,15 @@
       </button>
       <span
         *ngIf="!doccumentForm.valid && doccumentForm.touched"
-        class="help-block"
-        >Please fill out all inputs</span
+        class="help-block text-center p-2 fs-5 bg-danger"
+        ><strong>
+          Please fill out all inputs. * indicates a required field.</strong
+        ></span
       >
       <a
         routerLink="/second-form"
         *ngIf="formSubmitted"
-        class="btn btn-primary"
+        class="btn btn-success"
       >
         Next Form
       </a>
