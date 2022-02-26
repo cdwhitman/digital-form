@@ -1,3 +1,3 @@
 <h1>Digital Form Application</h1>
 
-<p>This app stores form data in a Firebase database and uses that data to auto fill the second form and then desplays the data in a filterable grid</p>
+<h3>This app uses a Firebase database to store form data. It then fetches the data to auto fill the same fields on second form, and takes the data from both form to desplay the data by submission in a filterable grid</h3>

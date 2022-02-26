@@ -7,7 +7,10 @@
     (ngSubmit)="onSubmit()"
     [formGroup]="secondForm"
   >
-    <div id="user-data">
+    <div *ngIf="formSubmitted && !error" class="text-center text-success my-5">
+      <h1>Thank you for your submission!</h1>
+    </div>
+    <div *ngIf="!formSubmitted">
       <div class="row my-3 justify-content-center">
         <!-- name -->
         <div class="form-group my-3 col-lg-5 col-md-12">
@@ -101,22 +104,25 @@
         </div>
       </div>
     </div>
-    <div class="d-grid gap-2 col-6 mx-auto">
+    <div *ngIf="!error" class="d-grid gap-2 col-6 mx-auto">
       <button
         type="submit"
         *ngIf="secondForm.valid && secondForm.touched && !formSubmitted"
         class="btn btn-primary"
       >
-        Submit and view all submissions!
+        Submit
       </button>
-      <span
-        *ngIf="!secondForm.valid && secondForm.touched"
-        class="help-block text-center p-2 fs-5 bg-dangerhelp-block text-danger"
-        ><strong>
-          Please fill out all required fields. * indicates a required
-          field.</strong
-        ></span
+      <a routerLink="/view" *ngIf="formSubmitted" class="btn btn-success">
+        View Submissions
+      </a>
+    </div>
+    <div class="fs-4 text-center alert alert-danger mt-5" *ngIf="error">
+      <span class="fs-3"
+        >There was an error fetching submissions. Please refresh the page to try
+        again. <br />
+        Error Message:</span
       >
+      {{ error }}
     </div>
   </form>
 </div>

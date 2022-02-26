@@ -4,11 +4,11 @@
     [formGroup]="doccumentForm"
     (ngSubmit)="onSubmit()"
   >
-    <div *ngIf="formSubmitted" class="text-center text-success my-5">
+    <div *ngIf="formSubmitted && !error" class="text-center text-success my-5">
       <h1>Thank you for your submission!</h1>
       <h2>Please proceed to the next form.</h2>
     </div>
-    <div *ngIf="!formSubmitted" id="user-data">
+    <div *ngIf="!formSubmitted">
       <div class="row my-3 justify-content-center">
         <!-- name -->
         <div class="form-group my-3 col-lg-5 col-md-12">
@@ -30,10 +30,10 @@
         </div>
         <!-- id number -->
         <div class="form-group my-3 col-lg-5 col-md-12">
-          <label for="id">ID# *</label>
+          <label for="dodId">DoD ID# *</label>
           <input
             type="number"
-            id="id"
+            id="dodId"
             formControlName="dodId"
             class="form-control"
           />
@@ -156,7 +156,7 @@
         </div>
       </div>
     </div>
-    <div class="d-grid gap-2 col-6 mx-auto">
+    <div *ngIf="!error" class="d-grid gap-2 col-6 mx-auto">
       <button
         type="submit"
         *ngIf="doccumentForm.valid && doccumentForm.touched && !formSubmitted"
@@ -164,13 +164,6 @@
       >
         Submit
       </button>
-      <span
-        *ngIf="!doccumentForm.valid && doccumentForm.touched"
-        class="help-block text-danger"
-        ><strong>
-          Please fill out all inputs. * indicates a required field.</strong
-        ></span
-      >
       <a
         routerLink="/second-form"
         *ngIf="formSubmitted"
@@ -178,6 +171,14 @@
       >
         Next Form
       </a>
+    </div>
+    <div class="fs-4 text-center alert alert-danger mt-5" *ngIf="error">
+      <span class="fs-3"
+        >There was an error fetching submissions. Please refresh the page to try
+        again. <br />
+        Error Message:</span
+      >
+      {{ error }}
     </div>
   </form>
 </div>

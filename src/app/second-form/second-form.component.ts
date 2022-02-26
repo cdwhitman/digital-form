@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { apiService } from 'src/app/shared/api.service';
-import { Router } from '@angular/router';
 import { Data } from '../data.model';
 
 @Component({
@@ -19,8 +18,9 @@ export class SecondFormComponent implements OnInit {
   });
   data: Data = {};
   formSubmitted: boolean = false;
+  error = null;
 
-  constructor(private apiService: apiService, private router: Router) {}
+  constructor(private apiService: apiService) {}
 
   ngOnInit() {
     this.apiService.fetchUserData().subscribe((data) => (this.data = data));
@@ -30,7 +30,7 @@ export class SecondFormComponent implements OnInit {
     this.secondForm.setValue({
       name: this.data.name,
       dodId: this.data.dodId,
-      satisfaction: '',
+      satisfaction: 5,
       unit: '',
       country: '',
     });
@@ -45,11 +45,15 @@ export class SecondFormComponent implements OnInit {
       unit: this.secondForm.value.unit,
       country: this.secondForm.value.country,
     };
-    this.apiService.patchSecondForm(newData).subscribe((responseData) => {
-      console.log(responseData);
-    });
+    this.apiService.patchSecondForm(newData).subscribe(
+      (responseData) => {
+        console.log(responseData);
+      },
+      (error) => {
+        this.error = error.message;
+      }
+    );
     this.secondForm.reset();
     localStorage.clear();
-    this.router.navigate(['/view']);
   }
 }

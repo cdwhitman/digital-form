@@ -22,6 +22,7 @@ export class FormComponent implements OnInit {
     mishapDescription: new FormControl(null),
   });
   formSubmitted: boolean = false;
+  error = null;
 
   constructor(private apiService: apiService) {}
 
@@ -41,11 +42,16 @@ export class FormComponent implements OnInit {
       mishapDescription: this.doccumentForm.value.mishapDescription,
     };
 
-    this.apiService.postFormData(newData).subscribe((responseData) => {
-      const jsonData = JSON.stringify(responseData);
-      localStorage.setItem('id', jsonData);
-      console.log(jsonData);
-    });
+    this.apiService.postFormData(newData).subscribe(
+      (responseData) => {
+        const jsonData = JSON.stringify(responseData);
+        localStorage.setItem('id', jsonData);
+        // console.log(jsonData);
+      },
+      (error) => {
+        this.error = error.message;
+      }
+    );
     this.doccumentForm.reset();
   }
 }

@@ -10,6 +10,8 @@ import { HeaderComponent } from './header/header.component';
 import { ViewDataComponent } from './view-data/view-data.component';
 import { SearchFilterPipe } from './search-filter.pipe';
 import { BranchFilterPipe } from './branch-filter.pipe';
+import { FooterComponent } from './footer/footer.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 const appRoutes: Routes = [
   { path: '', component: FormComponent },
@@ -26,6 +28,7 @@ const appRoutes: Routes = [
     ViewDataComponent,
     SearchFilterPipe,
     BranchFilterPipe,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,6 +36,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
