@@ -1,6 +1,10 @@
 <div class="container">
+  <input [(ngModel)]="searchText" placeholder="search text goes here" />
   <div class="row justify-content-center">
-    <div class="card col-xl-5 col-md-10 m-3" *ngFor="let user of users">
+    <div
+      class="card col-xl-5 col-md-10 m-3"
+      *ngFor="let user of users | searchFilter: searchText:'name'"
+    >
       <div class="text-center">
         <h1>{{ user.name }}</h1>
       </div>

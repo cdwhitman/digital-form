@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { apiService } from '../shared/api.service';
 import { Data } from '../data.model';
+import { SearchFilterPipe } from '../search-filter.pipe';
 // import { Subscription } from 'rxjs'
 
 @Component({
@@ -10,6 +11,10 @@ import { Data } from '../data.model';
 })
 export class ViewDataComponent implements OnInit {
   users: Data[] = [];
+  searchText: string = '';
+  // filteredUsers: Data[] = this.users.filter(function (users) {
+  //   return users.branch == 'Navy';
+  // });
   constructor(private apiService: apiService) {}
 
   ngOnInit() {
