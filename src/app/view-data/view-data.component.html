@@ -1,33 +1,71 @@
 <div class="container">
-  <input [(ngModel)]="searchText" placeholder="search text goes here" />
-  <div class="row justify-content-center">
-    <div
-      class="card col-xl-5 col-md-10 m-3"
-      *ngFor="let user of users | searchFilter: searchText:'name'"
-    >
-      <div class="text-center">
-        <h1>{{ user.name }}</h1>
+  <div class="fs-1 text-center white mt-5" *ngIf="isFetching">
+    Fetching Submissions
+  </div>
+  <div *ngIf="!isFetching">
+    <div class="row my-3 justify-content-between">
+      <div class="mb-3 col-3 col-xs-10">
+        <label class="fs-4 white" for="name"
+          ><strong>Search by name:</strong></label
+        >
+        <input
+          [(ngModel)]="searchText"
+          class="form-control"
+          placeholder="Search by name"
+        />
       </div>
-      <hr />
-      <div class="row p-5 fs-5 fs-bold">
-        <div class="col">
-          <p>DoD Id: {{ user.dodId }}</p>
-          <p>Email: {{ user.email }}</p>
-          <p>Branch: {{ user.branch }}</p>
-          <p>Unit: {{ user.unit }}</p>
-        </div>
-        <div class="col">
-          <p>Country: {{ user.country }}</p>
-          <p>Gender: {{ user.gender }}</p>
-          <p>Message: {{ user.message }}</p>
-          <p *ngIf="user.active">Active Duty</p>
-        </div>
+      <div class="mb-3 col-3 col-xs-10">
+        <label class="fs-4 white" for="branch"
+          ><strong>Filter by branch:</strong></label
+        >
+        <select
+          id="branch"
+          [(ngModel)]="branchSelect"
+          class="form-control form-select"
+        >
+          <option value="">All Branches</option>
+          <option value="Navy">Navy</option>
+          <option value="Army">Army</option>
+          <option value="Marines">Marines</option>
+          <option value="Air-force">Air Force</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div
+        class="card col-xl-5 col-md-10 m-3"
+        *ngFor="
+          let user of users
+            | searchFilter: searchText:'name'
+            | branchFilter: branchSelect:'branch'
+        "
+      >
+        <!-- <div class="fs-1 text-center white">{{ user.length }} Results</div> -->
         <div class="text-center">
-          <p>Description: {{ user.description }}</p>
-          <hr />
-          <p *ngIf="user.mishapDescription">
-            Mishap Description: {{ user.mishapDescription }}
-          </p>
+          <h1 class="mt-3">{{ user.name }}</h1>
+        </div>
+        <hr />
+        <div class="row p-5 fs-5 fs-bold">
+          <div class="col">
+            <p>DoD Id: {{ user.dodId }}</p>
+            <p>Email: {{ user.email }}</p>
+            <p>Branch: {{ user.branch }}</p>
+            <p>Unit: {{ user.unit }}</p>
+          </div>
+          <div class="col">
+            <p>Country: {{ user.country }}</p>
+            <p>Gender: {{ user.gender }}</p>
+            <p>Message: {{ user.message }}</p>
+            <p *ngIf="user.active">Active Duty</p>
+          </div>
+          <div class="text-center">
+            <p>Description: {{ user.description }}</p>
+            <hr />
+            <p *ngIf="user.mishapDescription">
+              Mishap Description: {{ user.mishapDescription }}
+            </p>
+          </div>
         </div>
       </div>
     </div>

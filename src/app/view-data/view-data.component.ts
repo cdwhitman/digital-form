@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { apiService } from '../shared/api.service';
 import { Data } from '../data.model';
-import { SearchFilterPipe } from '../search-filter.pipe';
-// import { Subscription } from 'rxjs'
 
 @Component({
   selector: 'app-view-data',
@@ -11,15 +9,16 @@ import { SearchFilterPipe } from '../search-filter.pipe';
 })
 export class ViewDataComponent implements OnInit {
   users: Data[] = [];
+  isFetching = false;
   searchText: string = '';
-  // filteredUsers: Data[] = this.users.filter(function (users) {
-  //   return users.branch == 'Navy';
-  // });
+  branchSelect: string = '';
+
   constructor(private apiService: apiService) {}
 
   ngOnInit() {
+    this.isFetching = true;
     this.apiService.fetchAll().subscribe((data) => {
-      // this.isFetching = false;
+      this.isFetching = false;
       this.users = data;
       console.log(data[0].message);
     });

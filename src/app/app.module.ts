@@ -9,6 +9,7 @@ import { SecondFormComponent } from './second-form/second-form.component';
 import { HeaderComponent } from './header/header.component';
 import { ViewDataComponent } from './view-data/view-data.component';
 import { SearchFilterPipe } from './search-filter.pipe';
+import { BranchFilterPipe } from './branch-filter.pipe';
 
 const appRoutes: Routes = [
   { path: '', component: FormComponent },
@@ -24,6 +25,7 @@ const appRoutes: Routes = [
     HeaderComponent,
     ViewDataComponent,
     SearchFilterPipe,
+    BranchFilterPipe,
   ],
   imports: [
     BrowserModule,
