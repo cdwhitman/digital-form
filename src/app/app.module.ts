@@ -14,7 +14,7 @@ import { FooterComponent } from './footer/footer.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 const appRoutes: Routes = [
-  { path: '', component: FormComponent },
+  { path: 'form', component: FormComponent },
   { path: 'second-form', component: SecondFormComponent },
   { path: 'view', component: ViewDataComponent },
 ];
