@@ -12,9 +12,10 @@ import { SearchFilterPipe } from './search-filter.pipe';
 import { BranchFilterPipe } from './branch-filter.pipe';
 import { FooterComponent } from './footer/footer.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 const appRoutes: Routes = [
-  { path: 'form', component: FormComponent },
+  { path: '', component: FormComponent },
   { path: 'second-form', component: SecondFormComponent },
   { path: 'view', component: ViewDataComponent },
 ];
@@ -38,7 +39,7 @@ const appRoutes: Routes = [
     FormsModule,
     FontAwesomeModule,
   ],
-  providers: [],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
