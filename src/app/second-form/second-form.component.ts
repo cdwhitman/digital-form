@@ -31,8 +31,8 @@ export class SecondFormComponent implements OnInit {
       name: this.data.name,
       dodId: this.data.dodId,
       satisfaction: 5,
-      unit: '',
-      country: '',
+      unit: null,
+      country: null,
     });
   }
 

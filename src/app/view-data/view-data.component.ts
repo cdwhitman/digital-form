@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { apiService } from '../shared/api.service';
 import { Data } from '../data.model';
-import { catchError } from 'rxjs';
-import { Subject, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-view-data',
@@ -26,7 +24,7 @@ export class ViewDataComponent implements OnInit {
     this.apiService.fetchAll().subscribe(
       (data) => {
         this.isFetching = false;
-        this.users = data;
+        this.users = data.reverse();
       },
       (error) => {
         this.error = error.message;
