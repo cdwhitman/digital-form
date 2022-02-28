@@ -107,7 +107,8 @@
     <div *ngIf="!error" class="d-grid gap-2 col-6 mx-auto">
       <button
         type="submit"
-        *ngIf="secondForm.valid && secondForm.touched && !formSubmitted"
+        *ngIf="!formSubmitted"
+        [ngClass]="{ disabled: !secondForm.valid }"
         class="btn btn-primary"
       >
         Submit

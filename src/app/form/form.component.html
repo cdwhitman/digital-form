@@ -48,7 +48,6 @@
         </div>
 
         <!-- email -->
-        <!-- <div class="row my-3"> -->
         <div class="col-lg-5 my-3 col-md-12">
           <label for="email">Email *</label>
           <input
@@ -77,7 +76,7 @@
             <option value="Navy">Navy</option>
             <option value="Army">Army</option>
             <option value="Marines">Marines</option>
-            <option value="Air-force">Air Force</option>
+            <option value="Air Force">Air Force</option>
           </select>
           <span
             *ngIf="
@@ -136,7 +135,7 @@
             >Did a mishap occur?</label
           >
           <input
-            class="form-check-input"
+            class="form-check-input form-control-md"
             type="checkbox"
             id="mishap"
             formControlName="mishap"
@@ -159,7 +158,8 @@
     <div *ngIf="!error" class="d-grid gap-2 col-6 mx-auto">
       <button
         type="submit"
-        *ngIf="doccumentForm.valid && doccumentForm.touched && !formSubmitted"
+        *ngIf="!formSubmitted"
+        [ngClass]="{ disabled: !doccumentForm.valid }"
         class="btn btn-primary"
       >
         Submit
